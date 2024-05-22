@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'reperguts/details.css' %}">
+</head>
+<body>
+    {% if students %}
+        <ul>
+            {% for student in students %}
+                <li>"Nome:" {{ student.name }}</li>
+                <li>"Idade:" {{ student.age }}</li>
+                <li>"Sonho:" {{ student.dream }}</li>
+                <li>"Professor:" {{ student.teacher.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+
+    
+    <form>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Endereço de email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Nunca compartilharemos seu email com ninguém.</div>
+      </div>
+      <div class="mb-3">
+        <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">Senha</label>
+          </div>
+          <div class="col-auto">
+            <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+          </div>
+          <div class="col-auto">
+            <span id="passwordHelpInline" class="form-text">
+              Terá de ter entre 8-20 caracteres.
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Não sou um robô</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Concluído</button>
+    </form>
+
